@@ -34,7 +34,7 @@ while True:
         elif saque_valor > 0:
             saldo -= saque_valor
             extrato += f"Saque: R${saque_valor:.2f}\n"
-            print(f"Você sacou um valor de R${saque_valor:.2f}")
+            print(f"Você sacou um valor de R${saque_valor:.2f}, seu saldo atual é de R${saldo:.2f}")
         else:
             print("Operação falhou! O valor informado é inválido")
     
