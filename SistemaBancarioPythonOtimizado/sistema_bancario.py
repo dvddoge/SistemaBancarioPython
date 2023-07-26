@@ -42,7 +42,7 @@ while True:
            
     elif opcao == "2":
         saque_valor = float(input("Digite o valor do saque(limitado a R$ 500,00): "))
-        saque(saldo=saldo, saque_valor=saque_valor, numero_saques=numero_saques, limite=limite, extrato=extrato)
+        saque(saldo=saldo, saque_valor=saque_valor, numero_saques=numero_saques, limite_saques=LIMITE_SAQUES, limite=limite, extrato=extrato)
     
     elif opcao == "3":
         print("===========EXTRATO==========")
