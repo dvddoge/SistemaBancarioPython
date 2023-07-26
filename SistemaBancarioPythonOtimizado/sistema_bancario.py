@@ -13,8 +13,8 @@ extrato = ""
 numero_saques = 0
 LIMITE_SAQUES = 3
 
-def saque(saldo, saque_valor, numero_saques, limite, extrato):
-    if numero_saques == LIMITE_SAQUES:
+def saque(saldo, saque_valor, numero_saques, limite_saques, limite, extrato):
+    if numero_saques > limite_saques:
         print("Você excedeu o limite de saques, selecione outra opção")
     elif saque_valor > limite:
         print("Esse valor é maior do que o permitido, tente novamente")
