@@ -13,7 +13,7 @@ extrato = ""
 numero_saques = 0
 LIMITE_SAQUES = 3
 
-def saque(saldo, saque_valor, numero_saques, limite_saques, limite, extrato):
+def sacar(*,saldo, saque_valor, numero_saques, limite_saques, limite, extrato):
     if numero_saques > limite_saques:
         print("Você excedeu o limite de saques, selecione outra opção")
     elif saque_valor > limite:
@@ -30,6 +30,9 @@ def saque(saldo, saque_valor, numero_saques, limite_saques, limite, extrato):
 
     return saldo, extrato
 
+def depositar(saldo, extrato, valor):
+
+
 while True:
     
     opcao = input(menu)
@@ -42,7 +45,14 @@ while True:
            
     elif opcao == "2":
         saque_valor = float(input("Digite o valor do saque(limitado a R$ 500,00): "))
-        saque(saldo=saldo, saque_valor=saque_valor, numero_saques=numero_saques, limite_saques=LIMITE_SAQUES, limite=limite, extrato=extrato)
+        saldo, extrato = sacar(
+            saldo=saldo, 
+            saque_valor=saque_valor,
+            numero_saques=numero_saques, 
+            limite_saques=LIMITE_SAQUES, 
+            limite=limite, 
+            extrato=extrato
+        )
     
     elif opcao == "3":
         print("===========EXTRATO==========")
