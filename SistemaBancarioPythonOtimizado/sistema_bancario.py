@@ -35,6 +35,14 @@ def depositar(saldo, extrato, valor, /):
     extrato += f"Depósito: R${valor:.2f}\n"
     print(f"Depósito realizado com sucesso!")
 
+    return saldo, extrato
+
+def exibir_extrato(saldo, /, *, extrato):
+        print("===========EXTRATO==========")
+        print("Não há movimentações no seu extrato!" if not extrato else extrato)
+        print(f"Saldo: R${saldo:.2f}")
+        print("============================")
+
 while True:
     
     opcao = input(menu)
@@ -55,10 +63,7 @@ while True:
         )
     
     elif opcao == "3":
-        print("===========EXTRATO==========")
-        print("Não há movimentações no seu extrato!" if not extrato else extrato)
-        print(f"Saldo: R${saldo:.2f}")
-        print("============================")
+        exibir_extrato(saldo, extrato=extrato)
         
     elif opcao == "4":
         print("Saindo do sistema...")
