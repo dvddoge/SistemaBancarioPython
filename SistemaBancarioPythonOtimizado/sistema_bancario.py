@@ -12,6 +12,7 @@ limite = 500
 extrato = ""
 numero_saques = 0
 LIMITE_SAQUES = 3
+usuarios = []
 
 def sacar(*,saldo, saque_valor, numero_saques, limite_saques, limite, extrato):
     if numero_saques > limite_saques:
@@ -38,10 +39,31 @@ def depositar(saldo, extrato, valor, /):
     return saldo, extrato
 
 def exibir_extrato(saldo, /, *, extrato):
-        print("===========EXTRATO==========")
-        print("Não há movimentações no seu extrato!" if not extrato else extrato)
-        print(f"Saldo: R${saldo:.2f}")
-        print("============================")
+    print("===========EXTRATO==========")
+    print("Não há movimentações no seu extrato!" if not extrato else extrato)
+    print(f"Saldo: R${saldo:.2f}")
+    print("============================")
+
+def validar_usuario(cpf, usuarios):
+    for usuario in usuarios:
+        if usuario["cpf"] == cpf:
+            return usuario
+    return None
+        
+def criar_usuario(usuarios):
+    cpf = input("Insira o seu cpf(somente números): ")
+    usuario = validar_usuario(cpf, usuarios)
+    if usuario:
+        print("Já existe um usuário com este cpf.")
+        return None
+    
+    nome = input("Digite seu nome completo: ")
+    data_nascimento = input("Digite sua data de nascimento(dd-mm-aaaa): ")
+    endereco = input("Digite seu endereço(logradouro, nro - bairro - cidade/sigla estado): ")
+
+    usuarios.append({"nome":nome, "data_nascimento": data_nascimento, "endereco": endereco, "cpf": cpf})
+
+    print("Usuário criado com sucesso!")
 
 while True:
     
