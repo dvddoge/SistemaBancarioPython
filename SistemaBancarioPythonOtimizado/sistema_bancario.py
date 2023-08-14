@@ -3,7 +3,9 @@ menu = """
 [1] - Depositar
 [2] - Sacar
 [3] - Extrato
-[4] - Sair
+[4] - Criar Usuário
+[5] - Criar Contas
+[7] - Sair
 
 => """
 
@@ -13,6 +15,8 @@ extrato = ""
 numero_saques = 0
 LIMITE_SAQUES = 3
 usuarios = []
+contas = []
+cont = 0
 
 def sacar(*,saldo, saque_valor, numero_saques, limite_saques, limite, extrato):
     if numero_saques > limite_saques:
@@ -54,7 +58,7 @@ def criar_usuario(usuarios):
     cpf = input("Insira o seu cpf(somente números): ")
     usuario = validar_usuario(cpf, usuarios)
     if usuario:
-        print("Já existe um usuário com este cpf.")
+        print("Já existe um usuário com esse cpf.")
         return None
     
     nome = input("Digite seu nome completo: ")
@@ -64,6 +68,17 @@ def criar_usuario(usuarios):
     usuarios.append({"nome":nome, "data_nascimento": data_nascimento, "endereco": endereco, "cpf": cpf})
 
     print("Usuário criado com sucesso!")
+
+def criar_conta(cont, usuarios, contas):
+    cpf = input("Informe o seu cpf")
+    usuario = validar_usuario(cpf, usuarios)
+
+    if usuario:
+        contas.append({usuario["nome"] : {"agencia" : "0001", "conta" : cont}})
+        cont += 1
+        return None
+
+    print("Esse cpf não está cadastrado.")
 
 while True:
     
@@ -88,6 +103,12 @@ while True:
         exibir_extrato(saldo, extrato=extrato)
         
     elif opcao == "4":
+        criar_usuario(usuarios)
+
+    elif opcao == "5":
+        criar_conta(cont, usuarios, contas)
+
+    elif opcao == "7":
         print("Saindo do sistema...")
         break
 
